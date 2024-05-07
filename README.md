@@ -24,10 +24,11 @@ Non-trainable params: 0
 
 |                      |                      |
 |----------------------|----------------------|
-| Loss                 | 3.1483829021453857   |
-| Train Accuracy       | 0.507146954536438    |
-| Validation Loss      | 3.06455397605896     |
-| Validation Accuracy  | 0.508832573890686    |
+| Loss                 | 0.6329621076583862   |
+| Train Accuracy       | 0.8930568099021912   |
+| Validation Loss      | 0.6247082948684692   |
+| Validation Accuracy  | 0.9080535769462585   |
+
 
 
 
