@@ -26,7 +26,6 @@ vectorizer = TfidfVectorizer()
 X_train_vectorized = vectorizer.fit_transform(X_train)
 X_test_vectorized = vectorizer.transform(X_test)
 
-# Determine the number of features (vocabulary size)
 num_features = X_train_vectorized.shape[1]
 
 X_train_tensor = torch.Tensor(X_train_vectorized.toarray()).to('cuda')
@@ -60,6 +59,8 @@ val_losses = []
 val_accuracies = []
 train_accuracies = []
 
+#train loop
+
 num_epochs = 15
 initial_model.train()
 for epoch in range(num_epochs):
@@ -70,14 +71,12 @@ for epoch in range(num_epochs):
     optimizer.step()
     train_losses.append(loss.item())
 
-    # Compute training accuracy
     predicted = torch.sigmoid(outputs)
     predicted[predicted >= 0.5] = 1
     predicted[predicted < 0.5] = 0
     train_accuracy = (predicted == y_train_tensor).float().mean()
     train_accuracies.append(train_accuracy.item())
 
-    # Compute validation loss and accuracy
     initial_model.eval()
     with torch.no_grad():
         val_outputs = initial_model(X_test_tensor)
